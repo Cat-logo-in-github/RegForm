@@ -57,12 +57,15 @@ export const playerFields = z.object({
     name: z.string().min(1, "Name is required"),
     date: z.date().refine(
         (date) => {
-            const currentDate = new Date();
-            const minDate = new Date(currentDate.getFullYear() - 25, currentDate.getMonth(), currentDate.getDate());
-            const maxDate = new Date(currentDate.getFullYear() - 17, currentDate.getMonth(), currentDate.getDate());
-            return date >= minDate && date <= maxDate;
-        },
-        { message: "age must be between 17 and 25 years old" }
+          const cutoffDate = new Date(2026, 1, 1); // 1 Feb 2026
+          let age = cutoffDate.getFullYear() - date.getFullYear();
+          const m = cutoffDate.getMonth() - date.getMonth();
+          if (m < 0 || (m === 0 && cutoffDate.getDate() < date.getDate())) {
+            age--;
+         }
+         return age >= 17 && age <= 25;
+       },
+       { message: "Player must be between 17 and 25 years old on 1 Feb 2026" }
     ),
     email: z.string().min(1, "Email is required").email("Invalid email address"),
     phone: z.string().refine(
@@ -74,13 +77,16 @@ export const playerFieldsDraft = z.object({
     name: z.string().min(1, "Name is required").optional(),
     date: z.date().refine(
         (date) => {
-            const currentDate = new Date();
-            const minDate = new Date(currentDate.getFullYear() - 25, currentDate.getMonth(), currentDate.getDate());
-            const maxDate = new Date(currentDate.getFullYear() - 17, currentDate.getMonth(), currentDate.getDate());
-            return date >= minDate && date <= maxDate;
+          const cutoffDate = new Date(2026, 1, 1);
+          let age = cutoffDate.getFullYear() - date.getFullYear();
+          const m = cutoffDate.getMonth() - date.getMonth();
+          if (m < 0 || (m === 0 && cutoffDate.getDate() < date.getDate())) {
+            age--;
+          }
+          return age >= 17 && age <= 25;
         },
-        { message: "age must be between 17 and 25 years old" }
-    ).optional(),
+        { message: "Player must be between 17 and 25 years old on 1 Feb 2026" }
+      ).optional(),
     email: z.string().min(1, "Email is required").email("Invalid email address").optional(),
     phone: z.string().refine(
         (phone) => /^[0-9]{10,15}$/.test(phone),
