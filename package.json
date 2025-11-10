@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 7000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:start": "docker compose -f docker-compose.dev.yml up -d",
+    "db:stop": "docker compose -f docker-compose.dev.yml stop",
+    "db:logs": "docker logs regform-mongodb-dev -f",
+    "db:reset": "docker compose -f docker-compose.dev.yml down -v && docker compose -f docker-compose.dev.yml up -d",
+    "local:setup": "./setup-local.sh",
+    "test:build": "npm run build && npm start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
