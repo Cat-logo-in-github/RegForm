@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { decrypt } from "@/app/utils/encryption";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-const JWT_SECRET = process.env.JWT_SECRET || "your-256-bit-secret";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,8 +11,16 @@ export async function POST(req: NextRequest) {
     const { tokene } = await req.json();
     const decryptedToken = decrypt(tokene).jwt;
 
-    // Verify the JWT
-    const verifiedToken = jwt.verify(decryptedToken, JWT_SECRET);
+    // Ensure JWT secret is available
+    if (!JWT_SECRET) {
+      return NextResponse.json(
+        { success: false, message: "Server misconfiguration: JWT_SECRET not set" },
+        { status: 500 }
+      );
+    }
+
+    // Verify the JWT (JWT_SECRET is guaranteed to be a string here)
+    const verifiedToken = jwt.verify(decryptedToken, JWT_SECRET as jwt.Secret);
 
     // If verification succeeds, send status 200 with the verified payload
     return NextResponse.json(
