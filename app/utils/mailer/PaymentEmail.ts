@@ -171,7 +171,8 @@ export async function sendPaymentConfirmationEmail(
         await transporter.sendMail({
             from: `"Payments" <${SMTP_USER}>`,
             to: formData.email,
-            cc :['vibha.rawat_ug2023@ashoka.edu.in','muhammed.razinmn_ug2023@ashoka.edu.in','dhruv.goyal_ug25@ashoka.edu.in','agneepath@ashoka.edu.in'],
+            //2025 OC - cc :['vibha.rawat_ug2023@ashoka.edu.in','muhammed.razinmn_ug2023@ashoka.edu.in','dhruv.goyal_ug25@ashoka.edu.in','agneepath@ashoka.edu.in'],
+            //cc :['jiya.vaya_ug2024@ashoka.edu.in','vidishaa.mundhra_ug2025@ashoka.edu.in','nishka.desai_ug2024@ashoka.edu.in','nishita.agarwal_ug2024@ashoka.edu.in'],
             subject: `Payment Confirmation - Transaction ID: ${formData.transactionId}`,
             html: emailContent,
             attachments: [

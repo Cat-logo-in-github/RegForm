@@ -156,7 +156,8 @@ async function sendConfirmationEmail(formData: FormData) {
     await transporter.sendMail({
       from: `Registation <SMTP_USER>`,
       to: formData.email,
-      cc :['vibha.rawat_ug2023@ashoka.edu.in','muhammed.razinmn_ug2023@ashoka.edu.in','agneepath@ashoka.edu.in'],
+      //2025 OC - cc :['vibha.rawat_ug2023@ashoka.edu.in','muhammed.razinmn_ug2023@ashoka.edu.in','agneepath@ashoka.edu.in'],
+      //cc :['jiya.vaya_ug2024@ashoka.edu.in','vidishaa.mundhra_ug2025@ashoka.edu.in','nishka.desai_ug2024@ashoka.edu.in','nishita.agarwal_ug2024@ashoka.edu.in'],
       subject: `Thank you for registering for Agneepath 6.0 (${formData.universityName})`,
       headers: {
           "X-Gm-NoSave": "1",
