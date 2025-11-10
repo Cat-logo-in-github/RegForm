@@ -38,6 +38,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { formMeta } from "@/app/utils/forms/schema";
 import { post } from "@/app/utils/PostGetData";
+import Image from "next/image";
 
 interface FormSelectProps {
   name: string;
@@ -296,7 +297,7 @@ const RenderForm: React.FC<{ schema: ZodObject<ZodRawShape>, draftSchema: ZodObj
                     className="block w-full"
                   />
                   {preview && (
-                    <img
+                    <Image
                       src={preview}
                       alt="Preview"
                       className="mt-2 w-24 h-24 object-cover rounded-md border"
@@ -311,6 +312,7 @@ const RenderForm: React.FC<{ schema: ZodObject<ZodRawShape>, draftSchema: ZodObj
       />
     );
   });
+  FormFile.displayName = "FormFile";
 
 
 
@@ -647,6 +649,11 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
   FormSelect.displayName = "FormSelect";
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const memoizedFormFields = useMemo(() => renderFormFields(schema), [schema, arrayFieldCounts,hasReset]);
+
+  FormInput.displayName = "FormInput";
+  FormFile.displayName = "FormFile";
+  FormDate.displayName = "FormDate";
+  FormSelect.displayName = "FormSelect";
 
   return (
     <Form {...form}>
