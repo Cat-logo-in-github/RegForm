@@ -38,7 +38,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { formMeta } from "@/app/utils/forms/schema";
 import { post } from "@/app/utils/PostGetData";
-import Image from "next/image";
 
 interface FormSelectProps {
   name: string;
@@ -297,7 +296,7 @@ const RenderForm: React.FC<{ schema: ZodObject<ZodRawShape>, draftSchema: ZodObj
                     className="block w-full"
                   />
                   {preview && (
-                    <Image
+                    <img
                       src={preview}
                       alt="Preview"
                       className="mt-2 w-24 h-24 object-cover rounded-md border"
