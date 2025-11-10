@@ -322,8 +322,8 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-4" align="start">
-                  <div className="flex gap-2 mb-4">
+                <PopoverContent className="w-auto p-3 rounded-md shadow-lg bg-white">
+                  <div className="flex gap-2 mb-3">
                     <Select
                       onValueChange={(value) => {
                         const year = parseInt(value);
@@ -365,9 +365,11 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
                     mode="single"
                     selected={value}
                     onSelect={(date) => {
-                      const dateValue = date ? new Date(date) : undefined;
-                      setSelectedDate(dateValue);
-                      field.onChange(dateValue);
+                      if (!date) return;
+                      const normalized = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                      setSelectedDate(normalized);
+                      field.onChange(normalized);
+                      setCalendarMonth(normalized); // keep month in sync
                     }}
                     disabled={(date) => date < minDate || date > maxDate}
                     month={calendarMonth}
