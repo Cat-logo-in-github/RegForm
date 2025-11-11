@@ -38,6 +38,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { formMeta } from "@/app/utils/forms/schema";
 import { post } from "@/app/utils/PostGetData";
+import Image from "next/image";
 
 interface FormSelectProps {
   name: string;
@@ -260,6 +261,62 @@ const RenderForm: React.FC<{ schema: ZodObject<ZodRawShape>, draftSchema: ZodObj
     />
   ));
 
+  const FormFile = React.memo(({ name, label, accept }: { name: string; label: string; accept?: string }) => {
+    return (
+      <FormField
+        control={form.control}
+        name={name}
+        render={({ field }) => {
+          const [preview, setPreview] = React.useState<string | null>(
+            typeof field.value === "string" && field.value.startsWith("data:image/")
+              ? field.value
+              : null
+          );
+
+          const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>, field: any) => {
+            const file = e.target.files?.[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                const dataUrl = reader.result as string;
+                field.onChange(dataUrl); // Save base64 string into form state
+                setPreview(dataUrl);
+              };
+              reader.readAsDataURL(file);
+            }
+          };
+          return(
+            <FormItem>
+              <FormLabel className="font-bold">{label}</FormLabel>
+              <FormControl>
+                <div>
+                  <Input
+                    type="file"
+                    accept={accept}
+                    onChange={(e) => handleFileChange(e, field)}
+                    className="w-full border-input rounded-md shadow-sm sm:text-sm text-base"
+                  />
+                  {preview && (
+                    <Image
+                      width={50}
+                      height={50}
+                      src={preview}
+                      alt="Preview"
+                      className="mt-2 object-cover rounded-md border"
+                    />
+                  )}
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )
+        }}
+      />
+    );
+  });
+  FormFile.displayName = "FormFile";
+
+
 
   const FormDate = React.memo(({ name, label, placeholder }: { name: string; label: string; placeholder: string }) => {
     const currentDate = new Date();
@@ -467,6 +524,17 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
 
       if (baseSchema instanceof ZodEffects) {
         baseSchema = baseSchema._def.schema;
+        const metaType = getNestedMetaValue(meta, metafieldpath, "type");
+        if (metaType === "photo" || fieldPath.endsWith("photo")) {
+          return (
+            <FormFile
+              key={fieldPath}
+              name={fieldPath}
+              label={getNestedMetaValue(meta, metafieldpath, "label") as string}
+              accept={getNestedMetaValue(meta, metafieldpath, "accept") as string}
+            />
+          );
+        }
       }
 
       if (baseSchema instanceof ZodString) {
@@ -583,6 +651,11 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
   FormSelect.displayName = "FormSelect";
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const memoizedFormFields = useMemo(() => renderFormFields(schema), [schema, arrayFieldCounts,hasReset]);
+
+  FormInput.displayName = "FormInput";
+  FormFile.displayName = "FormFile";
+  FormDate.displayName = "FormDate";
+  FormSelect.displayName = "FormSelect";
 
   return (
     <Form {...form}>

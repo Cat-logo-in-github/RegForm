@@ -22,6 +22,8 @@ interface EventSchema {
 interface fieldMeta {
     label: string;
     placeholder?: string;
+    type?: "text" | "photo";
+    accept?: string;
 }
 
 export interface formMeta {
@@ -72,6 +74,19 @@ export const playerFields = z.object({
         (phone) => /^[0-9]{10,15}$/.test(phone),
         { message: "Phone number must be atleast 10 digits" }
     ),
+    photo: z.string()
+        .min(1, {message: "Photo is required" })
+        .refine((val) => val.startsWith("data:image/"), {
+            message: "Invalid image format",
+        })
+        .refine((val) => {
+          const allowed = ["data:image/jpeg", "data:image/png", "data:image/webp"];
+          return allowed.some((prefix) => val.startsWith(prefix));
+        }, { message: "Only JPG, PNG, or WEBP images are allowed" })
+        .refine((val) => {
+          const sizeKB = (val.length * (3 / 4)) / 1024;
+          return sizeKB <= 7 * 1024;
+        }, { message: "Image must be less than 7MB" }),
 });
 export const playerFieldsDraft = z.object({
     name: z.string().min(1, "Name is required").optional(),
@@ -92,6 +107,7 @@ export const playerFieldsDraft = z.object({
         (phone) => /^[0-9]{10,15}$/.test(phone),
         { message: "Phone number must be atleast 10 digits" }
     ).optional(),
+    photo: z.string().optional(),
 });
 
 export const playerMeta: formMeta = {
@@ -104,7 +120,7 @@ export const playerMeta: formMeta = {
     gender: { label: "Gender", placeholder: "Select Gender" },
     category1: { label: "Category 1", placeholder: "Select Category" },
     category2: { label: "Category 2", placeholder: "Select Category" },
-
+    photo: { label: "Upload Photo", placeholder: "Upload Photo", type: "photo", accept: "image/jpeg,image/png" }
 };
 
 // ---------- Coach Fields ----------
