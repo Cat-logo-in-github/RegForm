@@ -119,7 +119,7 @@ export const playerMeta: formMeta = {
     gender: { label: "Gender", placeholder: "Select Gender" },
     category1: { label: "Category 1", placeholder: "Select Category" },
     category2: { label: "Category 2", placeholder: "Select Category" },
-    photo: { label: "photo", placeholder: "Upload Photo", type: "photo", accept: "image/jpeg,image/png" }
+    photo: { label: "Upload Photo", placeholder: "Upload Photo", type: "photo", accept: "image/jpeg,image/png" }
 };
 
 // ---------- Coach Fields ----------
