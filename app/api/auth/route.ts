@@ -2,6 +2,7 @@ import { hashPassword } from "@/app/utils/hashing";
 import { connectToDatabase } from "@/lib/mongodb";
 import crypto from "crypto";
 import { createErrorResponse } from "@/app/utils/interfaces";
+import { sendSignupConfirmationEmail } from "@/app/utils/mailer/SignupEmail";
 function generateVerificationId() {
   return crypto.randomBytes(32).toString("hex"); // Generates a 64-character token
 }
@@ -42,6 +43,14 @@ export async function POST(req: Request) {
       vTimeLimit: expirationTime,
       Accommodation:{needAccommodation:false}
     });
+
+    // Send signup confirmation email (non-blocking)
+    sendSignupConfirmationEmail({
+      name,
+      email: email.toLowerCase(),
+      universityName,
+      signupMethod: "form",
+    }).catch((err) => console.error("Sending signup email failed:", err));
 
     return new Response(
       JSON.stringify({ message: "User created successfully." }),

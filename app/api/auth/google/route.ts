@@ -5,6 +5,7 @@ import { connectToDatabase } from "@/lib/mongodb";
 import jwt from "jsonwebtoken";
 import { encrypt } from "@/app/utils/encryption";
 import { NextRequest, NextResponse } from "next/server";
+import { sendSignupConfirmationEmail } from "@/app/utils/mailer/SignupEmail";
 
 const JWT_SECRET = process.env.JWT_SECRET || "your-256-bit-secret"; // Your JWT secret
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID); // Google OAuth2 client initialization
@@ -16,7 +17,7 @@ export async function POST(req: NextRequest) {
     // Verify the Google token
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID, // Use your Google Client ID here
+      audience: process.env.GOOGLE_CLIENT_ID, // Use your Google Client ID here,
     });
 
     const payload = ticket.getPayload();
@@ -31,9 +32,11 @@ export async function POST(req: NextRequest) {
 
     // Check if the user exists in the database
     let existingUser = await collection.findOne({ email: email.toLowerCase() });
+    let isNewUser = false;
 
     // If the user doesn't exist, create a new one
     if (!existingUser) {
+      isNewUser = true;
       const result = await collection.insertOne({
         email: email.toLowerCase(),
         name,
@@ -50,6 +53,13 @@ export async function POST(req: NextRequest) {
       if (!existingUser) {
         return NextResponse.json({ success: false, message: "Failed to fetch user after insert." }, { status: 500 });
       }
+
+      // Send signup confirmation email for new users (non-blocking)
+      sendSignupConfirmationEmail({
+        name,
+        email: email.toLowerCase(),
+        signupMethod: "google",
+      }).catch((err) => console.error("Email send failed:", err));
     }
     const universityNameRequired = existingUser.universityName === "";
 
