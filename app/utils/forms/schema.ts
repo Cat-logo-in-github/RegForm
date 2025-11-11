@@ -75,6 +75,7 @@ export const playerFields = z.object({
         { message: "Phone number must be atleast 10 digits" }
     ),
     photo: z.string()
+        .min(1, {message: "Photo is required" })
         .refine((val) => val.startsWith("data:image/"), {
             message: "Invalid image format",
         })
