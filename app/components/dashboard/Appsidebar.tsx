@@ -59,7 +59,7 @@ export function AppSidebar() {
                     <Link
                       href={item.url}
                       className="flex items-center space-x-2 text-lg font-medium"
-                      target={item.external ? "_blank" : "_self"} // Open in a new tab if external
+                      target={item.external === true ? "_blank" : "_self"}
                     >
                       <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>
