@@ -19,7 +19,14 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 
-const items = [
+type MenuItem = {
+  title: string;
+  url: string;
+  icon: typeof LayoutDashboard;
+  external?: boolean;
+};
+
+const items: MenuItem[] = [
   // { title: "Home Page", url: "https://agneepath.co.in/", icon: Home, external: true }, // Added Home item - removed till main site is up
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Registration Form", url: "/dashboard/regForm", icon: BookText },
@@ -52,7 +59,7 @@ export function AppSidebar() {
                     <Link
                       href={item.url}
                       className="flex items-center space-x-2 text-lg font-medium"
-                      target={item.external === true ? "_blank" : "_self"}
+                      target={(item as MenuItem).external ? "_blank" : "_self"}
                     >
                       <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>
