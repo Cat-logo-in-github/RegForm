@@ -3,7 +3,7 @@
     xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-    <title>Welcome to Agneepath</title>
+    <title>Verify Your Email - Agneepath</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,7 +124,7 @@
 
         /* Content Section */
         .content-section {
-            padding: 40px 32px 24px 40px;
+            padding: 40px 32px 24px 32px;
         }
 
         .greeting {
@@ -161,36 +161,23 @@
             margin-bottom: 0;
         }
 
-        .success-box {
-            background-color: #d1fae5;
-            border-left: 4px solid #10b981;
+        .warning-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
             padding: 20px;
             margin: 24px 0;
             border-radius: 8px;
         }
 
-        .success-box p {
+        .warning-box p {
             margin: 0;
-            color: #065f46;
-            font-weight: 500;
-        }
-
-        .action-notice {
-            background-color: #eff6ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-
-        .action-notice p {
-            margin: 0;
-            color: #1e40af;
+            color: #92400e;
             font-weight: 500;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #2563eb;
+            background-color: #ed810c;
             color: #ffffff !important;
             padding: 14px 32px;
             border-radius: 8px;
@@ -199,11 +186,18 @@
             text-decoration: none;
             margin: 24px 0;
             transition: background-color 0.2s ease;
+            box-shadow: 0 2px 4px rgba(237, 129, 12, 0.2);
         }
 
         .cta-button:hover {
-            background-color: #1d4ed8;
+            background-color: #d67109;
             text-decoration: none;
+            box-shadow: 0 4px 6px rgba(237, 129, 12, 0.3);
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 32px 0;
         }
 
         /* Footer */
@@ -270,6 +264,8 @@
             .cta-button {
                 display: block;
                 text-align: center;
+                width: 100%;
+                box-sizing: border-box;
             }
         }
 
@@ -302,69 +298,88 @@
 <body>
     <div class="email-wrapper">
         <div class="email-container">
+            <!-- Logo Header -->
+            <div class="header-section" style="text-align: center;">
+                <img src="https://register.agneepath.co.in/logo2.png" alt="Agneepath Logo" style="width: 80px; height: 80px;" />
+            </div>
+
             <!-- Hero Section -->
             <div class="hero-section">
-                <img src="https://register.agneepath.co.in/logo2.png" alt="Agneepath Logo" style="width: 80px; height: 80px;" />
-                <h1 class="hero-title">Welcome to Agneepath 7.0!</h1>
-                <p class="hero-subtitle">Your account has been successfully created</p>
+                <h1 class="hero-title">Email Verification</h1>
+                <p class="hero-subtitle">Verify your account to continue registration</p>
             </div>
 
             <!-- Content Section -->
             <div class="content-section">
-                <p class="greeting">Hi {{name}},</p>
+                <p class="greeting">Hi,</p>
 
-                <h2>You've successfully created an account for Agneepath 7.0!</h2>
-
-                <p>We're excited to have you on board for Ashoka's biggest sports fest! Your account has been successfully created and you can start registering for events.</p>
-
-                <div class="success-box">
-                    <p>✓ Account created successfully</p>
-                </div>
-
+                <h2>Welcome to Agneepath 7.0!</h2>
+                
+                <p>Thank you for registering for the Agneepath sports fest at Ashoka University. To complete your registration and access all features, please verify your email address.</p>
+                
                 <div class="info-box">
-                    <h3>Your Account Details</h3>
-                    <p><strong>Email:</strong> {{email}}</p>
-                    <p><strong>Registration Method:</strong> {{signupMethod}}</p>
-                    {{#if universityName}}
-                    <p><strong>University:</strong> {{universityName}}</p>
-                    {{/if}}
+                    <h3>Why Verify?</h3>
+                    <p>Email verification ensures the security of your account and allows us to send you important updates about:</p>
+                    <ul style="margin: 10px 0 0 20px; padding: 0; color: #1e3a8a;">
+                        <li>Registration confirmations</li>
+                        <li>Payment updates</li>
+                        <li>Event schedules and announcements</li>
+                        <li>Important notifications from Team Agneepath</li>
+                    </ul>
                 </div>
 
-                {{#if isFormSignup}}
-                <div class="action-notice">
-                    <p><strong>Important:</strong> Please verify your email address to complete your registration. Check your inbox for a verification link.</p>
-                </div>
-                {{else}}
-                <p>Since you signed up with Google, your email is already verified and you can start using your account right away!</p>
-                {{/if}}
-
-                <div style="text-align: center; margin: 32px 0;">
-                    <a href="{{dashboardUrl}}" class="cta-button">Go to Dashboard</a>
+                <div class="button-container">
+                    <a href="{{verificationLink}}" class="cta-button">
+                        Verify Email Address
+                    </a>
                 </div>
 
-                <p style="color: #6b7280; font-size: 14px; margin-top: 32px;">If you have any questions or need assistance, feel free to reach out to our support team.</p>
+                <div class="warning-box">
+                    <p><strong>⚠️ Important:</strong> This verification link is unique to your account. Please do not share it with anyone.</p>
+                </div>
+
+                <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+                    If you're having trouble clicking the button, copy and paste the following link into your browser:
+                </p>
+                <p style="font-size: 13px; color: #6b7280; word-break: break-all; background-color: #f9fafb; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace;">
+                    {{verificationLink}}
+                </p>
+
+                <p style="margin-top: 32px;">
+                    For any queries, feel free to contact us at <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.
+                </p>
+
+                <p style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+                    Best regards,<br>
+                    <strong>Team Agneepath 7.0</strong><br>
+                    Ashoka University
+                </p>
             </div>
 
             <!-- Footer Section -->
             <div class="footer-section">
-                <p class="footer-text">This is an automated message from Agneepath. Please do not reply to this email.</p>
-                
-                <p class="footer-warning">⚠️ If you didn't create this account, please contact us immediately.</p>
+                <p class="footer-text">
+                    This email was sent to you because you created an account at <a href="https://register.agneepath.co.in">register.agneepath.co.in</a>.
+                </p>
+
+                <p class="footer-text footer-warning">
+                    If you did not create this account, please ignore this email or contact us at <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a> immediately.
+                </p>
 
                 <div class="footer-contacts">
-                    <p class="footer-text">Need help? Contact us:</p>
-                    <div class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>
-                    </div>
+                    <p class="footer-text" style="margin-bottom: 16px;">
+                        <span class="contact-label">Agneepath 7.0</span><br>
+                        Sports Fest | Ashoka University<br>
+                        Sonipat, Haryana, India
+                    </p>
                 </div>
 
-                <p class="footer-text smalltext" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-                    &copy; {{currentYear}} Agneepath. All rights reserved.<br>
-                    <span style="color: #9ca3af;">Sent on {{timestamp}}</span>
+                <p class="footer-text smalltext" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
+                    © 2025 Agneepath, Ashoka University. All rights reserved.
                 </p>
             </div>
         </div>
     </div>
 </body>
+
 </html>

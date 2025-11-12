@@ -88,7 +88,8 @@ export async function sendSignupConfirmationEmail(data: SignupEmailData): Promis
     await transporter.sendMail({
       from: `"Agneepath" <${SMTP_USER}>`,
       to: data.email,
-      // cc:
+      //cc :['jiya.vaya_ug2024@ashoka.edu.in','vidishaa.mundhra_ug2025@ashoka.edu.in','nishka.desai_ug2024@ashoka.edu.in','nishita.agarwal_ug2024@ashoka.edu.in'],
+      subject: "Verify your account - Agneepath 7.0",
       subject: "Welcome to Agneepath! 🎉",
       html: emailContent,
       attachments,
