@@ -88,6 +88,7 @@ export async function sendSignupConfirmationEmail(data: SignupEmailData): Promis
     await transporter.sendMail({
       from: `"Agneepath" <${SMTP_USER}>`,
       to: data.email,
+      // cc:
       subject: "Welcome to Agneepath! 🎉",
       html: emailContent,
       attachments,
