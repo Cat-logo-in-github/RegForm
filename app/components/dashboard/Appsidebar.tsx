@@ -1,6 +1,7 @@
 "use client";
 
-import { CreditCard, BookText, LayoutDashboard, LogOut, Home, Hotel } from "lucide-react";
+import { CreditCard, BookText, LayoutDashboard, LogOut} from "lucide-react";
+// import { CreditCard, BookText, LayoutDashboard, LogOut, //Home, Hotel } from "lucide-react"; - If home and hotel icons are needed
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
