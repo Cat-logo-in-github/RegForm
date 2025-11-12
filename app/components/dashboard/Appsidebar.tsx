@@ -19,14 +19,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 
-type MenuItem = {
-  title: string;
-  url: string;
-  icon: typeof LayoutDashboard;
-  external?: boolean;
-};
-
-const items: MenuItem[] = [
+const items = [
   // { title: "Home Page", url: "https://agneepath.co.in/", icon: Home, external: true }, // Added Home item - removed till main site is up
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Registration Form", url: "/dashboard/regForm", icon: BookText },
