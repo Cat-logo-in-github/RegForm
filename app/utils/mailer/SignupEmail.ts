@@ -1,12 +1,14 @@
 import nodemailer from "nodemailer";
 import fs from "fs";
 import path from "path";
+import { encrypt } from "@/app/utils/encryption";
 
 interface SignupEmailData {
   name: string;
   email: string;
   universityName?: string;
   signupMethod: "google" | "form";
+  verificationToken?: string; // Add verification token for form signups
 }
 
 export async function sendSignupConfirmationEmail(data: SignupEmailData): Promise<void> {
@@ -37,6 +39,11 @@ export async function sendSignupConfirmationEmail(data: SignupEmailData): Promis
     // Determine if form signup (needs email verification)
     const isFormSignup = data.signupMethod === "form";
 
+    // Create verification link for form signups (same format as Verification route)
+    const verificationLink = isFormSignup && data.verificationToken
+      ? `${ROOT_URL}Verification/verify?e=${encrypt({ email: data.email })}&i=${encrypt({ vid: data.verificationToken })}`
+      : "";
+
     // Replace simple placeholders
     emailContent = emailContent
       .replace(/{{name}}/g, data.name)
@@ -44,6 +51,7 @@ export async function sendSignupConfirmationEmail(data: SignupEmailData): Promis
       .replace(/{{universityName}}/g, data.universityName || "Not provided yet")
       .replace(/{{signupMethod}}/g, data.signupMethod === "google" ? "Google OAuth" : "Email & Password")
       .replace(/{{dashboardUrl}}/g, `${ROOT_URL || "https://agneepath.co.in/"}dashboard`)
+      .replace(/{{verificationLink}}/g, verificationLink)
       .replace(/{{timestamp}}/g, new Date().toLocaleString("en-US", { 
         dateStyle: "long", 
         timeStyle: "short",
@@ -88,9 +96,9 @@ export async function sendSignupConfirmationEmail(data: SignupEmailData): Promis
     await transporter.sendMail({
       from: `"Agneepath" <${SMTP_USER}>`,
       to: data.email,
+      // OLD EMAILS - cc: ['vibha.rawat_ug2023@ashoka.edu.in','muhammed.razinmn_ug2023@ashoka.edu.in','dhruv.goyal_ug25@ashoka.edu.in','agneepath@ashoka.edu.in'],
       //cc :['jiya.vaya_ug2024@ashoka.edu.in','vidishaa.mundhra_ug2025@ashoka.edu.in','nishka.desai_ug2024@ashoka.edu.in','nishita.agarwal_ug2024@ashoka.edu.in'],
-      subject: "Verify your account - Agneepath 7.0",
-      subject: "Welcome to Agneepath! 🎉",
+      subject: isFormSignup ? "Verify your account - Agneepath 7.0" : "Welcome to Agneepath! 🎉",
       html: emailContent,
       attachments,
       headers: {

@@ -617,8 +617,7 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
           
           <Button
             onClick={handleSubmitClick}
-
-            type="submit"
+            type="button"
             disabled={isSubmitting}
             className=" font-semibold py-2.5 px-6  duration-200"
           >
@@ -634,8 +633,7 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
         <div className="flex justify-end gap-4 mt-6 pb-6">
           <Button
             onClick={handleSaveDraftClick}
-
-            type="submit"
+            type="button"
             disabled={isSubmittingDraft}
             className="bg-white text-black hover:bg-slate-100 border-2 border-solid border-black font-semibold py-2.5 px-6  duration-200"
           >
@@ -648,8 +646,7 @@ const maxDate = new Date(2009, 1, 1); // On or before 1 Feb 2009
           
           <Button
             onClick={handleSubmitClick}
-
-            type="submit"
+            type="button"
             disabled={isSubmitting}
             className=" font-semibold py-2.5 px-6  duration-200"
           >

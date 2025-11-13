@@ -331,16 +331,48 @@
                 </div>
 
                 {{#if isFormSignup}}
-                <div class="action-notice">
-                    <p><strong>Important:</strong> Please verify your email address to complete your registration. Check your inbox for a verification link.</p>
+                <!-- Email Verification Section -->
+                <h2 style="margin-top: 32px;">One More Step: Verify Your Email 📧</h2>
+                
+                <p>To complete your registration and access all features, please verify your email address by clicking the button below.</p>
+                
+                <div class="info-box">
+                    <h3>Why Verify?</h3>
+                    <p style="margin: 0 0 8px 0;">Email verification ensures the security of your account and allows us to send you important updates about:</p>
+                    <ul style="margin: 10px 0 0 20px; padding: 0; color: #1e3a8a;">
+                        <li>Registration confirmations</li>
+                        <li>Payment updates</li>
+                        <li>Event schedules and announcements</li>
+                        <li>Important notifications from Team Agneepath</li>
+                    </ul>
                 </div>
+
+                <div style="text-align: center; margin: 32px 0;">
+                    <a href="{{verificationLink}}" class="cta-button" style="background-color: #ed810c; box-shadow: 0 2px 4px rgba(237, 129, 12, 0.2);">
+                        Verify Email Address
+                    </a>
+                </div>
+
+                <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 24px 0; border-radius: 8px;">
+                    <p style="margin: 0; color: #92400e; font-weight: 500;"><strong>⚠️ Important:</strong> This verification link is unique to your account. Please do not share it with anyone.</p>
+                </div>
+
+                <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
+                    If you're having trouble clicking the button, copy and paste the following link into your browser:
+                </p>
+                <p style="font-size: 13px; color: #2563eb; word-break: break-all; background-color: #f9fafb; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid #e5e7eb;">
+                    <a href="{{verificationLink}}" style="color: #2563eb; text-decoration: none;">{{verificationLink}}</a>
+                </p>
                 {{else}}
+                <div class="success-box">
+                    <p>✓ Email already verified via Google</p>
+                </div>
                 <p>Since you signed up with Google, your email is already verified and you can start using your account right away!</p>
-                {{/if}}
 
                 <div style="text-align: center; margin: 32px 0;">
                     <a href="{{dashboardUrl}}" class="cta-button">Go to Dashboard</a>
                 </div>
+                {{/if}}
 
                 <p style="color: #6b7280; font-size: 14px; margin-top: 32px;">If you have any questions or need assistance, feel free to reach out to our support team.</p>
             </div>

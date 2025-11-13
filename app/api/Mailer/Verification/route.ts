@@ -15,7 +15,7 @@ async function getVerificationId(email: string): Promise<string | null> {
   return user?.VerificationId || null;
 }
 
-async function sendEmail(to: string, id: string) {
+async function sendEmail(to: string, id: string, userName?: string) {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, ROOT_URL } = process.env;
 
   if (!SMTP_USER || !SMTP_PASS || !ROOT_URL) {
@@ -39,15 +39,36 @@ async function sendEmail(to: string, id: string) {
   const timestamp = new Date().toISOString();
   const uniqueMessageId = `<verify-${id}-${Date.now()}@agneepath.co.in>`;
   
-  // Load the email template
-  const templatePath = path.join(process.cwd(), "templates", "verify-email.html");
+  // Load the signup email template (which includes verification for form signups)
+  const templatePath = path.join(process.cwd(), "templates", "signup.html");
   let emailTemplate = fs.readFileSync(templatePath, "utf-8");
 
   // Create verification link
   const verificationLink = `${ROOT_URL}Verification/verify?e=${encrypt({ email: to })}&i=${encrypt({ vid: id })}`;
 
   // Replace placeholders in template
-  emailTemplate = emailTemplate.replace(/{{verificationLink}}/g, verificationLink);
+  emailTemplate = emailTemplate
+    .replace(/{{name}}/g, userName || "there")
+    .replace(/{{email}}/g, to)
+    .replace(/{{universityName}}/g, "Not provided yet")
+    .replace(/{{signupMethod}}/g, "Email & Password")
+    .replace(/{{dashboardUrl}}/g, `${ROOT_URL}dashboard`)
+    .replace(/{{verificationLink}}/g, verificationLink)
+    .replace(/{{timestamp}}/g, new Date().toLocaleString("en-US", { 
+      dateStyle: "long", 
+      timeStyle: "short",
+      timeZone: "Asia/Kolkata" 
+    }))
+    .replace(/{{currentYear}}/g, new Date().getFullYear().toString());
+
+  // Handle conditional sections - show verification (isFormSignup = true)
+  emailTemplate = emailTemplate.replace(
+    /{{#if isFormSignup}}([\s\S]*?){{else}}[\s\S]*?{{\/if}}/g,
+    "$1"
+  );
+
+  // Handle university name conditional (no university provided)
+  emailTemplate = emailTemplate.replace(/{{#if universityName}}[\s\S]*?{{\/if}}/g, "");
 
   await transporter.sendMail({
     from: `"Agneepath" <${SMTP_USER}>`,
@@ -105,7 +126,7 @@ export async function POST(req: Request) {
       );
     }
 
-    await sendEmail(email, verificationId);
+    await sendEmail(email, verificationId, user.name);
     return new Response(
       JSON.stringify({ message: "Email sent successfully" }),
       { 

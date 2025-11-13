@@ -103,15 +103,8 @@ export function SignUp() {
             if (data) {
                 setSuccess(data.message || "Sign-up successful!");
                 
-                // Send verification email
-                const { data: emailData, error: emailError } = await post<{ message: string }>("/api/Mailer/Verification", { email: formData.email });
-                
-                if (emailError) {
-                    setError("Account created but failed to send verification email. Please contact support.");
-                    console.error("Verification email error:", emailError);
-                    setIsLoading(false);
-                    return;
-                }
+                // Signup email with verification link is already sent by /api/auth
+                // No need to send separate verification email
                 
                 router.push(`/Verification?v=${encrypt({ email: formData.email })}`);
             } else if (error) {

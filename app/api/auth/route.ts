@@ -50,6 +50,7 @@ export async function POST(req: Request) {
       email: email.toLowerCase(),
       universityName,
       signupMethod: "form",
+      verificationToken: vid,
     }).catch((err) => console.error("Sending signup email failed:", err));
 
     return new Response(
