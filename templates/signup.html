@@ -5,20 +5,124 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Welcome — Agneepath</title>
     <style>
-      body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f3f4f6;color:#111827}
-      .container{max-width:680px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
-      .header{display:flex;gap:12px;align-items:center;padding:20px 28px;border-bottom:1px solid #eef2f7}
-      .logo{width:64px;height:64px;object-fit:contain}
-      .brand{font-size:20px;font-weight:700}
-      .content{padding:28px}
-      h1{margin:0 0 12px;font-size:20px}
-      p{margin:0 0 12px;color:#374151}
-      .box{padding:16px;border-radius:8px}
-      .success{background:#ecfdf5;border-left:4px solid #10b981;color:#065f46}
-      .cta{display:inline-block;padding:12px 20px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600}
-      .footer{background:#fbfafb;padding:20px 28px;border-top:1px solid #eef2f7;color:#6b7280;font-size:13px}
-      a{color:#2563eb}
-      @media (max-width:520px){.container{margin:16px}.header{padding:16px}.content{padding:18px}}
+      body { 
+        font-family: Inter, system-ui, 'Segoe UI', Arial, sans-serif; 
+        margin: 0; 
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); 
+        color: #111827;
+        line-height: 1.6;
+      }
+      .container { 
+        max-width: 680px; 
+        margin: 32px auto; 
+        background: #ffffff; 
+        border-radius: 12px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+      .header { 
+        display: flex; 
+        gap: 16px; 
+        align-items: center; 
+        padding: 32px 36px; 
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .logo { 
+        width: 72px; 
+        height: 72px; 
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      }
+      .brand { 
+        font-size: 24px; 
+        font-weight: 700; 
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      .tagline { 
+        font-size: 13px; 
+        color: rgba(255,255,255,0.85); 
+        font-weight: 500;
+      }
+      .content { 
+        padding: 40px 36px; 
+      }
+      h1 { 
+        margin: 0 0 8px; 
+        font-size: 26px; 
+        font-weight: 700; 
+        color: #111827;
+        letter-spacing: -0.03em;
+      }
+      p { 
+        margin: 0 0 16px; 
+        color: #374151; 
+        line-height: 1.7;
+      }
+      .greeting { 
+        font-size: 16px; 
+        color: #111827;
+        margin-bottom: 24px;
+      }
+      .box { 
+        padding: 20px 24px; 
+        border-radius: 10px; 
+        margin: 24px 0;
+        border: 1px solid;
+      }
+      .success { 
+        background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+        border-color: #10b981; 
+        border-left: 4px solid #10b981;
+        color: #065f46;
+      }
+      .box strong { 
+        font-size: 16px; 
+        display: block; 
+        margin-bottom: 8px;
+      }
+      .cta { 
+        display: inline-block; 
+        padding: 14px 28px; 
+        border-radius: 10px; 
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); 
+        color: #ffffff; 
+        text-decoration: none; 
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        transition: all 0.2s ease;
+      }
+      .cta:hover { 
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+        transform: translateY(-1px);
+      }
+      .footer { 
+        background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%); 
+        padding: 28px 36px; 
+        border-top: 1px solid #e5e7eb; 
+        color: #6b7280; 
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      a { 
+        color: #2563eb; 
+        text-decoration: none; 
+        font-weight: 500;
+      }
+      a:hover { 
+        color: #1d4ed8; 
+        text-decoration: underline;
+      }
+      @media (max-width: 640px) { 
+        .container { margin: 20px 16px; }
+        .header { padding: 24px 20px; }
+        .content { padding: 28px 24px; }
+        .footer { padding: 24px 20px; }
+        h1 { font-size: 22px; }
+        .logo { width: 64px; height: 64px; }
+      }
     </style>
   </head>
   <body>
@@ -27,7 +131,7 @@
         <img class="logo" src="https://register.agneepath.co.in/logo2.png" alt="Agneepath logo" />
         <div>
           <div class="brand">Agneepath</div>
-          <div style="font-size:12px;color:#6b7280">Ashoka University • Sports Fest</div>
+          <div class="tagline">Ashoka University • Sports Fest</div>
         </div>
       </div>
 
@@ -37,427 +141,26 @@
 
         <div class="box success">
           <strong>Account created</strong>
-          <div style="margin-top:8px">Your account has been created. Use the link below to go to your dashboard and finish any pending steps (payment, verification).</div>
+          <div>Your account has been created. Use the link below to go to your dashboard and finish any pending steps (payment, verification).</div>
         </div>
 
         <p><strong>Email:</strong> {{email}}</p>
         <p><strong>University:</strong> {{institution}}</p>
 
         {{#if verification_link}}
-        <p style="margin-top:18px">Please verify your email to complete setup:</p>
+        <p style="margin-top: 24px;">Please verify your email to complete setup:</p>
         <p><a class="cta" href="{{verification_link}}">Verify Email</a></p>
         {{/if}}
 
-        <p style="margin-top:20px">If you need help, contact <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
-        <p style="margin-top:12px">Best regards,<br/><strong>Team Agneepath</strong></p>
+        <p style="margin-top: 24px;">If you need help, contact <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
+        <p style="margin-top: 12px;">Best regards,<br/><strong>Team Agneepath</strong></p>
       </div>
 
       <div class="footer">
         <div>This is an automated message. Do not reply directly to this email.</div>
-        <div style="margin-top:8px">&copy; {{current_year}} Agneepath. All rights reserved.</div>
+        <div style="margin-top: 8px;">&copy; {{current_year}} Agneepath. All rights reserved.</div>
       </div>
     </div>
   </body>
 </html>
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
-    xmlns:o="urn:schemas-microsoft-com:office:office">
-
-<head>
-    <title>Welcome to Agneepath</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style type="text/css">
-        .header-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 24px 24px 0 24px;
-        }
-        .smalltext {
-            font-size: 10px;
-            color: #6b7280;
-        }
-        /* Reset Styles */
-        #outlook a {
-            padding: 0;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        }
-
-        table,
-        td {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        img {
-            border: 0;
-            width: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        /* Typography */
-        p {
-            display: block;
-            margin: 0 0 16px 0;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #374151;
-        }
-
-        h2 {
-            margin: 0 0 16px 0;
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.3;
-            color: #111827;
-        }
-
-        h3 {
-            margin: 0 0 8px 0;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: #374151;
-        }
-
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-
-        /* Layout */
-        .email-wrapper {
-            background-color: #f3f4f6;
-            padding: 40px 20px;
-        }
-
-        .email-container {
-            margin: 0 auto;
-            max-width: 600px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-            padding: 48px 32px;
-            text-align: center;
-        }
-
-        .hero-title {
-            color: #ffffff;
-            font-size: 32px;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-subtitle {
-            color: #bfdbfe;
-            font-size: 16px;
-            margin: 0;
-            font-weight: 400;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 40px 32px 24px 40px;
-        }
-
-        .greeting {
-            font-size: 16px;
-            color: #6b7280;
-            margin-bottom: 24px;
-        }
-
-        /* Info Box */
-        .info-box {
-            background-color: #dbeafe;
-            border-left: 4px solid #2563eb;
-            padding: 20px;
-            margin: 24px 0;
-            border-radius: 8px;
-        }
-
-        .info-box h3 {
-            margin: 0 0 8px 0;
-            color: #1e40af;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .info-box p {
-            margin: 0 0 8px 0;
-            color: #1e3a8a;
-            font-weight: 500;
-        }
-
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .success-box {
-            background-color: #d1fae5;
-            border-left: 4px solid #10b981;
-            padding: 20px;
-            margin: 24px 0;
-            border-radius: 8px;
-        }
-
-        .success-box p {
-            margin: 0;
-            color: #065f46;
-            font-weight: 500;
-        }
-
-        .action-notice {
-            background-color: #eff6ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-
-        .action-notice p {
-            margin: 0;
-            color: #1e40af;
-            font-weight: 500;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #2563eb;
-            color: #ffffff !important;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            margin: 24px 0;
-            transition: background-color 0.2s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #1d4ed8;
-            text-decoration: none;
-        }
-
-        /* Footer */
-        .footer-section {
-            background-color: #f9fafb;
-            padding: 32px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footer-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #6b7280;
-            margin: 0 0 8px 0;
-        }
-
-        .footer-warning {
-            font-weight: 600;
-            color: #dc2626;
-            margin: 16px 0;
-        }
-
-        .footer-contacts {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .contact-item {
-            margin: 8px 0;
-        }
-
-        .contact-label {
-            font-weight: 600;
-            color: #374151;
-        }
-
-        /* Responsive Design */
-        @media only screen and (max-width: 600px) {
-            .email-wrapper {
-                padding: 20px 10px;
-            }
-
-            .content-section {
-                padding: 24px 20px;
-            }
-
-            .footer-section {
-                padding: 24px 20px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            .hero-title {
-                font-size: 24px;
-            }
-
-            .hero-section {
-                padding: 32px 20px;
-            }
-
-            .cta-button {
-                display: block;
-                text-align: center;
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            .mj-column-per-100 {
-                width: 100% !important;
-                max-width: 100%;
-            }
-
-            table.mj-full-width-mobile {
-                width: 100% !important;
-            }
-
-            td.mj-full-width-mobile {
-                width: auto !important;
-            }
-        }
-
-        /* Font Smoothing */
-        a,
-        span,
-        td,
-        th {
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="email-wrapper">
-        <div class="email-container">
-            <!-- Hero Section -->
-            <div class="hero-section">
-                <img src="https://register.agneepath.co.in/logo2.png" alt="Agneepath Logo" style="width: 80px; height: 80px;" />
-                <h1 class="hero-title">Welcome to Agneepath 7.0!</h1>
-                <p class="hero-subtitle">Your account has been successfully created</p>
-            </div>
-
-            <!-- Content Section -->
-            <div class="content-section">
-                <p class="greeting">Hi {{name}},</p>
-
-                <h2>You've successfully created an account for Agneepath 7.0!</h2>
-
-                <p>We're excited to have you on board for Ashoka's biggest sports fest! Your account has been successfully created and you can start registering for events.</p>
-
-                <div class="success-box">
-                    <p>✓ Account created successfully</p>
-                </div>
-
-                <div class="info-box">
-                    <h3>Your Account Details</h3>
-                    <p><strong>Email:</strong> {{email}}</p>
-                    <p><strong>Registration Method:</strong> {{signupMethod}}</p>
-                    {{#if universityName}}
-                    <p><strong>University:</strong> {{universityName}}</p>
-                    {{/if}}
-                </div>
-
-                {{#if isFormSignup}}
-                <!-- Email Verification Section -->
-                <h2 style="margin-top: 32px;">One More Step: Verify Your Email 📧</h2>
-                
-                <p>To complete your registration and access all features, please verify your email address by clicking the button below.</p>
-                
-                <div class="info-box">
-                    <h3>Why Verify?</h3>
-                    <p style="margin: 0 0 8px 0;">Email verification ensures the security of your account and allows us to send you important updates about:</p>
-                    <ul style="margin: 10px 0 0 20px; padding: 0; color: #1e3a8a;">
-                        <li>Registration confirmations</li>
-                        <li>Payment updates</li>
-                        <li>Event schedules and announcements</li>
-                        <li>Important notifications from Team Agneepath</li>
-                    </ul>
-                </div>
-
-                <div style="text-align: center; margin: 32px 0;">
-                    <a href="{{verificationLink}}" class="cta-button" style="background-color: #ed810c; box-shadow: 0 2px 4px rgba(237, 129, 12, 0.2);">
-                        Verify Email Address
-                    </a>
-                </div>
-
-                <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin: 24px 0; border-radius: 8px;">
-                    <p style="margin: 0; color: #92400e; font-weight: 500;"><strong>⚠️ Important:</strong> This verification link is unique to your account. Please do not share it with anyone.</p>
-                </div>
-
-                <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
-                    If you're having trouble clicking the button, copy and paste the following link into your browser:
-                </p>
-                <p style="font-size: 13px; color: #2563eb; word-break: break-all; background-color: #f9fafb; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; border: 1px solid #e5e7eb;">
-                    <a href="{{verificationLink}}" style="color: #2563eb; text-decoration: none;">{{verificationLink}}</a>
-                </p>
-                {{else}}
-                <div class="success-box">
-                    <p>✓ Email already verified via Google</p>
-                </div>
-                <p>Since you signed up with Google, your email is already verified and you can start using your account right away!</p>
-
-                <div style="text-align: center; margin: 32px 0;">
-                    <a href="{{dashboardUrl}}" class="cta-button">Go to Dashboard</a>
-                </div>
-                {{/if}}
-
-                <p style="color: #6b7280; font-size: 14px; margin-top: 32px;">If you have any questions or need assistance, feel free to reach out to our support team.</p>
-            </div>
-
-            <!-- Footer Section -->
-            <div class="footer-section">
-                <p class="footer-text">This is an automated message from Agneepath. Please do not reply to this email.</p>
-                
-                <p class="footer-warning">⚠️ If you didn't create this account, please contact us immediately.</p>
-
-                <div class="footer-contacts">
-                    <p class="footer-text">Need help? Contact us:</p>
-                    <div class="contact-item">
-                        <span class="contact-label">Email:</span>
-                        <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>
-                    </div>
-                </div>
-
-                <p class="footer-text smalltext" style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-                    &copy; {{currentYear}} Agneepath. All rights reserved.<br>
-                    <span style="color: #9ca3af;">Sent on {{timestamp}}</span>
-                </p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>

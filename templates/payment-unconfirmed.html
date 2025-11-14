@@ -5,23 +5,144 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Payment Submitted — Agneepath</title>
     <style>
-      body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f3f4f6;color:#111827}
-      .container{max-width:680px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
-      .header{display:flex;gap:12px;align-items:center;padding:20px 28px;border-bottom:1px solid #eef2f7}
-      .logo{width:64px;height:64px;object-fit:contain}
-      .brand{font-size:20px;font-weight:700}
-      .content{padding:28px}
-      h1{margin:0 0 12px;font-size:20px}
-      p{margin:0 0 12px;color:#374151}
-      .box{padding:16px;border-radius:8px}
-      .warning{background:#fff7ed;border-left:4px solid #f59e0b;color:#92400e}
-      .info{background:#eef2ff;border-left:4px solid #2563eb;color:#1e3a8a}
-      table.details{width:100%;border-collapse:collapse;margin-top:16px}
-      table.details td{padding:10px;border-top:1px solid #eef2f7}
-      .label{width:38%;font-weight:600;color:#374151}
-      .footer{background:#fbfafb;padding:20px 28px;border-top:1px solid #eef2f7;color:#6b7280;font-size:13px}
-      a{color:#2563eb}
-      @media (max-width:520px){.container{margin:16px}.header{padding:16px}.content{padding:18px}}
+      body { 
+        font-family: Inter, system-ui, 'Segoe UI', Arial, sans-serif; 
+        margin: 0; 
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); 
+        color: #111827;
+        line-height: 1.6;
+      }
+      .container { 
+        max-width: 680px; 
+        margin: 32px auto; 
+        background: #ffffff; 
+        border-radius: 12px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+      .header { 
+        display: flex; 
+        gap: 16px; 
+        align-items: center; 
+        padding: 32px 36px; 
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .logo { 
+        width: 72px; 
+        height: 72px; 
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      }
+      .brand { 
+        font-size: 24px; 
+        font-weight: 700; 
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      .tagline { 
+        font-size: 13px; 
+        color: rgba(255,255,255,0.85); 
+        font-weight: 500;
+      }
+      .content { 
+        padding: 40px 36px; 
+      }
+      h1 { 
+        margin: 0 0 8px; 
+        font-size: 26px; 
+        font-weight: 700; 
+        color: #111827;
+        letter-spacing: -0.03em;
+      }
+      p { 
+        margin: 0 0 16px; 
+        color: #374151; 
+        line-height: 1.7;
+      }
+      .greeting { 
+        font-size: 16px; 
+        color: #111827;
+        margin-bottom: 24px;
+      }
+      .box { 
+        padding: 20px 24px; 
+        border-radius: 10px; 
+        margin: 24px 0;
+        border: 1px solid;
+      }
+      .warning { 
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+        border-color: #f59e0b; 
+        border-left: 4px solid #f59e0b;
+        color: #92400e;
+      }
+      .info { 
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+        border-color: #2563eb; 
+        border-left: 4px solid #2563eb;
+        color: #1e40af;
+      }
+      .box strong { 
+        font-size: 16px; 
+        display: block; 
+        margin-bottom: 8px;
+      }
+      table.details { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 18px;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      table.details td { 
+        padding: 14px 16px; 
+        border-bottom: 1px solid #f3f4f6;
+        font-size: 14px;
+      }
+      table.details tr:last-child td { 
+        border-bottom: none;
+      }
+      table.details th {
+        padding: 14px 16px;
+        background: #f9fafb;
+        font-weight: 600;
+        color: #374151;
+        text-align: left;
+        font-size: 14px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .label { 
+        width: 40%; 
+        font-weight: 600; 
+        color: #374151;
+      }
+      .footer { 
+        background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%); 
+        padding: 28px 36px; 
+        border-top: 1px solid #e5e7eb; 
+        color: #6b7280; 
+        font-size: 13px;
+        line-height: 1.8;
+      }
+      a { 
+        color: #2563eb; 
+        text-decoration: none; 
+        font-weight: 500;
+      }
+      a:hover { 
+        color: #1d4ed8; 
+        text-decoration: underline;
+      }
+      @media (max-width: 640px) { 
+        .container { margin: 20px 16px; }
+        .header { padding: 24px 20px; }
+        .content { padding: 28px 24px; }
+        .footer { padding: 24px 20px; }
+        h1 { font-size: 22px; }
+        .logo { width: 64px; height: 64px; }
+      }
     </style>
   </head>
   <body>
@@ -30,7 +151,7 @@
         <img class="logo" src="https://register.agneepath.co.in/logo2.png" alt="Agneepath logo" />
         <div>
           <div class="brand">Agneepath</div>
-          <div style="font-size:12px;color:#6b7280">Ashoka University • Sports Fest</div>
+          <div class="tagline">Ashoka University • Sports Fest</div>
         </div>
       </div>
 
@@ -40,7 +161,7 @@
 
         <div class="box warning">
           <strong>We have received your payment submission.</strong>
-          <div style="margin-top:8px">Your payment has been submitted and is currently pending verification by our team. We will notify you once the payment is verified.</div>
+          <div>Your payment has been submitted and is currently pending verification by our team. We will notify you once the payment is verified.</div>
         </div>
 
         <table class="details" role="presentation">
@@ -51,441 +172,18 @@
           <tr><td class="label">Submitted On</td><td>{{submitted_at}}</td></tr>
         </table>
 
-        <div class="box info" style="margin-top:18px">
+        <div class="box info">
           <strong>Need to update something?</strong>
-          <div style="margin-top:8px">If the payment details are incorrect, reply to <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a> and include your registration id.</div>
+          <div>If the payment details are incorrect, reply to <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a> and include your registration id.</div>
         </div>
 
-        <p style="margin-top:20px">Best regards,<br/><strong>Team Agneepath</strong></p>
+        <p style="margin-top: 20px;">Best regards,<br/><strong>Team Agneepath</strong></p>
       </div>
 
       <div class="footer">
         <div>Questions? <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a></div>
-        <div style="margin-top:8px">&copy; {{current_year}} Agneepath. All rights reserved.</div>
+        <div style="margin-top: 8px;">&copy; {{current_year}} Agneepath. All rights reserved.</div>
       </div>
     </div>
   </body>
-</html>
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
-    xmlns:o="urn:schemas-microsoft-com:office:office">
-
-<head>
-    <title>Payment Confirmation - Agneepath 2025</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style type="text/css">
-        .header-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            padding: 24px 24px 0 24px;
-        }
-        .smalltext {
-            font-size: 10px;
-            color: #6b7280;
-        }
-        /* Reset Styles */
-        #outlook a {
-            padding: 0;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-        }
-
-        table,
-        td {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
-
-        img {
-            border: 0;
-            width: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
-        }
-
-        /* Typography */
-        p {
-            display: block;
-            margin: 0 0 16px 0;
-            font-size: 15px;
-            line-height: 1.6;
-            color: #374151;
-        }
-
-        h2 {
-            margin: 0 0 16px 0;
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.3;
-            color: #111827;
-        }
-
-        h3 {
-            margin: 0 0 8px 0;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 1.4;
-            color: #374151;
-        }
-
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-
-        /* Layout */
-        .email-wrapper {
-            background-color: #f3f4f6;
-            padding: 40px 20px;
-        }
-
-        .email-container {
-            margin: 0 auto;
-            max-width: 600px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 40px 32px 24px 40px;
-        }
-
-        .greeting {
-            font-size: 16px;
-            color: #6b7280;
-            margin-bottom: 24px;
-        }
-
-        /* Success Box */
-        .success-box {
-            background-color: #d1fae5;
-            border-left: 4px solid #10b981;
-            padding: 20px;
-            margin: 24px 0;
-            border-radius: 8px;
-        }
-
-        .success-box h3 {
-            margin: 0 0 8px 0;
-            color: #065f46;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .success-box p {
-            margin: 0;
-            color: #065f46;
-            font-weight: 500;
-        }
-
-        /* Info Box */
-        .info-box {
-            background-color: #dbeafe;
-            border-left: 4px solid #2563eb;
-            padding: 20px;
-            margin: 24px 0;
-            border-radius: 8px;
-        }
-
-        .info-box h3 {
-            margin: 0 0 12px 0;
-            color: #1e40af;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .info-box p {
-            margin: 0 0 8px 0;
-            color: #1e3a8a;
-            font-weight: 500;
-        }
-
-        .info-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Warning Box */
-        .warning-box {
-            background-color: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 20px;
-            margin: 24px 0;
-            border-radius: 8px;
-        }
-
-        .warning-box p {
-            margin: 0;
-            color: #92400e;
-            font-weight: 500;
-        }
-
-        /* Payment Details Table */
-        .details-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .details-table th {
-            background-color: #f3f4f6;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-            color: #374151;
-            border-bottom: 2px solid #e5e7eb;
-        }
-
-        .details-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e5e7eb;
-            color: #4b5563;
-        }
-
-        .details-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .details-table .label-cell {
-            font-weight: 600;
-            color: #374151;
-            width: 40%;
-        }
-
-        .details-table .total-row {
-            background-color: #f9fafb;
-            font-weight: 700;
-            color: #111827;
-        }
-
-        /* Footer */
-        .footer-section {
-            background-color: #f9fafb;
-            padding: 32px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footer-text {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #6b7280;
-            margin: 0 0 8px 0;
-        }
-
-        .footer-warning {
-            font-weight: 600;
-            color: #dc2626;
-            margin: 16px 0;
-        }
-
-        .footer-contacts {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .contact-item {
-            margin: 8px 0;
-        }
-
-        .contact-label {
-            font-weight: 600;
-            color: #374151;
-        }
-
-        /* Responsive Design */
-        @media only screen and (max-width: 600px) {
-            .email-wrapper {
-                padding: 20px 10px;
-            }
-
-            .content-section {
-                padding: 24px 20px;
-            }
-
-            .footer-section {
-                padding: 24px 20px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            .details-table th,
-            .details-table td {
-                padding: 8px;
-                font-size: 13px;
-            }
-
-            .details-table .label-cell {
-                width: 50%;
-            }
-        }
-
-        @media only screen and (max-width: 480px) {
-            .mj-column-per-100 {
-                width: 100% !important;
-                max-width: 100%;
-            }
-
-            table.mj-full-width-mobile {
-                width: 100% !important;
-            }
-
-            td.mj-full-width-mobile {
-                width: auto !important;
-            }
-        }
-
-        /* Font Smoothing */
-        a,
-        span,
-        td,
-        th {
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="email-wrapper">
-        <div class="email-container">
-            <div class="header-section">
-                <img src="https://register.agneepath.co.in/logo2.png" alt="Agneepath Logo" style="width: 80px; height: 80px;" />
-                <h1>Agneepath 2025</h1>
-            </div>
-            
-            <!-- Content Section -->
-            <div class="content-section">
-                <p class="greeting">Dear {{name}},</p>
-
-                <h2>Payment Confirmation Received</h2>
-                
-                <div class="success-box">
-                    <h3>✓ Payment Details Submitted</h3>
-                    <p>Thank you for submitting your payment for Agneepath 7.0. This email confirms that we have received your payment details and they are currently under review by our team.</p>
-                </div>
-
-                <p>We appreciate your prompt payment submission. Our finance team will carefully review your payment details to ensure everything is in order.</p>
-
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Payment Details</h3>
-                
-                <table class="details-table">
-                    <tr>
-                        <td class="label-cell">Payee Name</td>
-                        <td>{{payeeName}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">Payment Type</td>
-                        <td>{{paymentTypes}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">Payment Mode</td>
-                        <td>{{paymentMode}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">Amount</td>
-                        <td><strong>₹{{amountInNumbers}}</strong> ({{amountInWords}})</td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">Transaction ID</td>
-                        <td>{{transactionId}}</td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">Payment Date</td>
-                        <td>{{paymentDate}}</td>
-                    </tr>
-                    {{#if remarks}}
-                    <tr>
-                        <td class="label-cell">Remarks</td>
-                        <td>{{remarks}}</td>
-                    </tr>
-                    {{/if}}
-                </table>
-
-                {{#if sportsTable}}
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Sports Registration Details</h3>
-                <table class="details-table">
-                    <tr>
-                        <th>Sport</th>
-                        <th>Players</th>
-                        <th>Registration Fee</th>
-                    </tr>
-                    {{sportsTable}}
-                </table>
-                {{/if}}
-
-                {{#if accommodationTable}}
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Accommodation Details</h3>
-                <table class="details-table">
-                    <tr>
-                        <th>Number of People</th>
-                        <th>Price per Person</th>
-                        <th>Total Amount</th>
-                    </tr>
-                    {{accommodationTable}}
-                </table>
-                {{/if}}
-
-                <div class="warning-box">
-                    <p><strong>⏱ Verification Timeline:</strong> Our team will review your payment details and send you a confirmation email once verified. Please allow up to 48-72 hours for the verification process.</p>
-                </div>
-
-                <div class="info-box">
-                    <h3>What Happens Next?</h3>
-                    <p><strong>1. Payment Verification:</strong> Our team will verify your payment details against our bank records.</p>
-                    <p><strong>2. Confirmation Email:</strong> Once verified, you'll receive a final confirmation email with your registration details.</p>
-                    <p><strong>3. Event Access:</strong> After confirmation, you'll have full access to all event information and updates.</p>
-                </div>
-
-                <p style="margin-top: 24px;">If you have any questions or concerns, please contact us at <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
-
-                <p style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
-                    Best regards,<br>
-                    <strong>Team Agneepath 7.0</strong><br>
-                    Ashoka University
-                </p>
-            </div>
-
-            <!-- Footer Section -->
-            <div class="footer-section">
-                <p class="footer-text footer-warning">
-                    If you did not submit this payment, please contact us immediately at <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.
-                </p>
-            </div>
-        </div>
-    </div>
-</body>
-
 </html>

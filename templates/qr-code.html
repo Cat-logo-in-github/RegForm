@@ -5,18 +5,101 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Your QR Code — Agneepath</title>
     <style>
-      body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f3f4f6;color:#111827}
-      .container{max-width:680px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
-      .header{display:flex;gap:12px;align-items:center;padding:20px 28px;border-bottom:1px solid #eef2f7}
-      .logo{width:64px;height:64px;object-fit:contain}
-      .brand{font-size:20px;font-weight:700}
-      .content{padding:28px;text-align:center}
-      h1{margin:0 0 12px;font-size:20px}
-      p{margin:0 0 12px;color:#374151}
-      .qr{display:inline-block;padding:16px;border-radius:8px;background:#fff;border:1px solid #eef2f7}
-      .footer{background:#fbfafb;padding:20px 28px;border-top:1px solid #eef2f7;color:#6b7280;font-size:13px}
-      a{color:#2563eb}
-      @media (max-width:520px){.container{margin:16px}.header{padding:16px}.content{padding:18px}}
+      body { 
+        font-family: Inter, system-ui, 'Segoe UI', Arial, sans-serif; 
+        margin: 0; 
+        background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); 
+        color: #111827;
+        line-height: 1.6;
+      }
+      .container { 
+        max-width: 680px; 
+        margin: 32px auto; 
+        background: #ffffff; 
+        border-radius: 12px; 
+        overflow: hidden; 
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+      .header { 
+        display: flex; 
+        gap: 16px; 
+        align-items: center; 
+        padding: 32px 36px; 
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .logo { 
+        width: 72px; 
+        height: 72px; 
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      }
+      .brand { 
+        font-size: 24px; 
+        font-weight: 700; 
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      .tagline { 
+        font-size: 13px; 
+        color: rgba(255,255,255,0.85); 
+        font-weight: 500;
+      }
+      .content { 
+        padding: 40px 36px;
+        text-align: center;
+      }
+      h1 { 
+        margin: 0 0 8px; 
+        font-size: 26px; 
+        font-weight: 700; 
+        color: #111827;
+        letter-spacing: -0.03em;
+      }
+      p { 
+        margin: 0 0 16px; 
+        color: #374151; 
+        line-height: 1.7;
+      }
+      .greeting { 
+        font-size: 16px; 
+        color: #111827;
+        margin-bottom: 24px;
+      }
+      .qr { 
+        display: inline-block; 
+        padding: 20px; 
+        border-radius: 12px; 
+        background: #ffffff; 
+        border: 2px solid #e5e7eb;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      .footer { 
+        background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%); 
+        padding: 28px 36px; 
+        border-top: 1px solid #e5e7eb; 
+        color: #6b7280; 
+        font-size: 13px;
+        line-height: 1.8;
+        text-align: center;
+      }
+      a { 
+        color: #2563eb; 
+        text-decoration: none; 
+        font-weight: 500;
+      }
+      a:hover { 
+        color: #1d4ed8; 
+        text-decoration: underline;
+      }
+      @media (max-width: 640px) { 
+        .container { margin: 20px 16px; }
+        .header { padding: 24px 20px; }
+        .content { padding: 28px 24px; }
+        .footer { padding: 24px 20px; }
+        h1 { font-size: 22px; }
+        .logo { width: 64px; height: 64px; }
+      }
     </style>
   </head>
   <body>
@@ -25,7 +108,7 @@
         <img class="logo" src="https://register.agneepath.co.in/logo2.png" alt="Agneepath logo" />
         <div>
           <div class="brand">Agneepath</div>
-          <div style="font-size:12px;color:#6b7280">Ashoka University • Sports Fest</div>
+          <div class="tagline">Ashoka University • Sports Fest</div>
         </div>
       </div>
 
@@ -34,22 +117,22 @@
         <p class="greeting">Hello {{name}},</p>
         <p>Below is your entry QR code. Present this QR at check-in for quick access to the event.</p>
 
-        <div class="qr" style="margin:18px auto">
+        <div class="qr" style="margin: 24px auto;">
           <!-- Replace with actual QR image or inlined svg -->
-          <img src="{{qr_code_image}}" alt="QR code" style="display:block;max-width:240px;height:auto" />
+          <img src="{{qr_code_image}}" alt="QR code" style="display: block; max-width: 240px; height: auto;" />
         </div>
 
-        <p style="margin-top:8px">Registration ID: <strong>{{registration_id}}</strong></p>
-        <p style="margin-top:6px">Institution: <strong>{{institution}}</strong></p>
+        <p style="margin-top: 16px;">Registration ID: <strong>{{registration_id}}</strong></p>
+        <p style="margin-top: 6px;">Institution: <strong>{{institution}}</strong></p>
 
-        <p style="margin-top:20px">If you need help, contact <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
+        <p style="margin-top: 24px;">If you need help, contact <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
 
-        <p style="margin-top:20px">Best regards,<br/><strong>Team Agneepath</strong></p>
+        <p style="margin-top: 20px;">Best regards,<br/><strong>Team Agneepath</strong></p>
       </div>
 
       <div class="footer">
         <div>Keep this QR code private; do not share it publicly.</div>
-        <div style="margin-top:8px">&copy; {{current_year}} Agneepath. All rights reserved.</div>
+        <div style="margin-top: 8px;">&copy; {{current_year}} Agneepath. All rights reserved.</div>
       </div>
     </div>
   </body>
