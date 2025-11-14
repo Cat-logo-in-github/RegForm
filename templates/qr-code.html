@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Your QR Code — Agneepath</title>
+    <style>
+      body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f3f4f6;color:#111827}
+      .container{max-width:680px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+      .header{display:flex;gap:12px;align-items:center;padding:20px 28px;border-bottom:1px solid #eef2f7}
+      .logo{width:64px;height:64px;object-fit:contain}
+      .brand{font-size:20px;font-weight:700}
+      .content{padding:28px;text-align:center}
+      h1{margin:0 0 12px;font-size:20px}
+      p{margin:0 0 12px;color:#374151}
+      .qr{display:inline-block;padding:16px;border-radius:8px;background:#fff;border:1px solid #eef2f7}
+      .footer{background:#fbfafb;padding:20px 28px;border-top:1px solid #eef2f7;color:#6b7280;font-size:13px}
+      a{color:#2563eb}
+      @media (max-width:520px){.container{margin:16px}.header{padding:16px}.content{padding:18px}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img class="logo" src="https://register.agneepath.co.in/logo2.png" alt="Agneepath logo" />
+        <div>
+          <div class="brand">Agneepath</div>
+          <div style="font-size:12px;color:#6b7280">Ashoka University • Sports Fest</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>Your QR Code</h1>
+        <p class="greeting">Hello {{name}},</p>
+        <p>Below is your entry QR code. Present this QR at check-in for quick access to the event.</p>
+
+        <div class="qr" style="margin:18px auto">
+          <!-- Replace with actual QR image or inlined svg -->
+          <img src="{{qr_code_image}}" alt="QR code" style="display:block;max-width:240px;height:auto" />
+        </div>
+
+        <p style="margin-top:8px">Registration ID: <strong>{{registration_id}}</strong></p>
+        <p style="margin-top:6px">Institution: <strong>{{institution}}</strong></p>
+
+        <p style="margin-top:20px">If you need help, contact <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a>.</p>
+
+        <p style="margin-top:20px">Best regards,<br/><strong>Team Agneepath</strong></p>
+      </div>
+
+      <div class="footer">
+        <div>Keep this QR code private; do not share it publicly.</div>
+        <div style="margin-top:8px">&copy; {{current_year}} Agneepath. All rights reserved.</div>
+      </div>
+    </div>
+  </body>
+</html>

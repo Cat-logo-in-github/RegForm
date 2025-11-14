@@ -1,4 +1,71 @@
 <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Registration — Agneepath</title>
+    <style>
+      body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;background:#f3f4f6;color:#111827}
+      .container{max-width:680px;margin:32px auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+      .header{display:flex;gap:12px;align-items:center;padding:20px 28px;border-bottom:1px solid #eef2f7}
+      .logo{width:64px;height:64px;object-fit:contain}
+      .brand{font-size:20px;font-weight:700}
+      .content{padding:28px}
+      h1{margin:0 0 12px;font-size:20px}
+      p{margin:0 0 12px;color:#374151}
+      .box{padding:16px;border-radius:8px}
+      .notice{background:#eef2ff;border-left:4px solid #2563eb;color:#1e3a8a}
+      .success{background:#ecfdf5;border-left:4px solid #10b981;color:#065f46}
+      table.details{width:100%;border-collapse:collapse;margin-top:16px}
+      table.details td{padding:10px;border-top:1px solid #eef2f7}
+      .label{width:38%;font-weight:600;color:#374151}
+      .footer{background:#fbfafb;padding:20px 28px;border-top:1px solid #eef2f7;color:#6b7280;font-size:13px}
+      a{color:#2563eb}
+      @media (max-width:520px){.container{margin:16px}.header{padding:16px}.content{padding:18px}}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img class="logo" src="https://register.agneepath.co.in/logo2.png" alt="Agneepath logo" />
+        <div>
+          <div class="brand">Agneepath</div>
+          <div style="font-size:12px;color:#6b7280">Ashoka University • Sports Fest</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h1>Registration Received</h1>
+        <p class="greeting">Hello {{name}},</p>
+
+        <div class="box notice">
+          <strong>We have received your registration.</strong>
+          <div style="margin-top:8px">Your registration for {{sport}} has been saved. Please complete payment (if not already done) to finalize your spot.</div>
+        </div>
+
+        <table class="details" role="presentation">
+          <tr><td class="label">Registration ID</td><td>{{registration_id}}</td></tr>
+          <tr><td class="label">Institution</td><td>{{institution}}</td></tr>
+          <tr><td class="label">Sport</td><td>{{sport}}</td></tr>
+          <tr><td class="label">Players / Coaches</td><td>{{players_and_coaches}}</td></tr>
+        </table>
+
+        <div class="box" style="margin-top:18px">
+          <strong>Next steps</strong>
+          <div style="margin-top:8px">Complete payment via the dashboard and upload payment proof. After verification you will receive the final confirmation and (if applicable) a QR code for entry.</div>
+        </div>
+
+        <p style="margin-top:20px">Best regards,<br/><strong>Team Agneepath</strong></p>
+      </div>
+
+      <div class="footer">
+        <div>Need help? <a href="mailto:agneepath@ashoka.edu.in">agneepath@ashoka.edu.in</a></div>
+        <div style="margin-top:8px">&copy; {{current_year}} Agneepath. All rights reserved.</div>
+      </div>
+    </div>
+  </body>
+</html>
+<!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
     xmlns:o="urn:schemas-microsoft-com:office:office">
 
